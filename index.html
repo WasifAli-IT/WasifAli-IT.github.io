@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wasif Ali — Developer Portfolio</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<nav class="navbar">
+  <div class="logo">Wasif<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-content reveal">
+    <p class="hero-greeting">Hello, I'm</p>
+    <h1 class="hero-name">Wasif Ali</h1>
+    <h2 class="hero-tagline">
+      <span class="typed-text"></span><span class="cursor">|</span>
+    </h2>
+    <p class="hero-desc">
+      I build practical, secure software from the ground up — currently focused
+      on Python and web development, with a passion for turning ideas into
+      real, working applications.
+    </p>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://github.com/WasifAli-IT" target="_blank" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56 0-.27-.01-1-.02-1.97-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.26-1.28-5.26-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.73.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.4-5.27 5.68.42.36.78 1.07.78 2.17 0 1.56-.01 2.82-.01 3.2 0 .31.2.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
+      </a>
+      <a href="mailto:wasifali19477@gmail.com" aria-label="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm19.4 2H2.6L12 12.5 21.4 6ZM1 7.4V18h22V7.4l-10.5 7a1 1 0 0 1-1 0L1 7.4Z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-indicator"><span></span></div>
+</header>
+
+<section class="section" id="about">
+  <div class="section-heading reveal">
+    <span class="section-number">01</span>
+    <h2>About Me</h2>
+  </div>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>
+        I'm Wasif Ali, a student developer learning web development and Python.
+        I recently built <strong>Research Vault</strong>, a fully offline,
+        encryption-secured research management desktop application — applying
+        real software architecture, security best practices, and UI polish from
+        the ground up.
+      </p>
+      <p>
+        I'm continuously building my skills, learning by doing, and looking
+        for opportunities to grow as a developer. I care about writing clean,
+        well-structured code and genuinely understanding how the systems I
+        build actually work — not just making them run.
+      </p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-card">
+        <h3>01</h3>
+        <p>Full offline-first desktop application shipped, tested &amp; packaged</p>
+      </div>
+      <div class="highlight-card">
+        <h3>104</h3>
+        <p>Automated tests written and passing</p>
+      </div>
+      <div class="highlight-card">
+        <h3>AES-256</h3>
+        <p>Real encryption implemented for a secure vault feature</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="section-heading reveal">
+    <span class="section-number">02</span>
+    <h2>Featured Project</h2>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-info">
+      <p class="project-eyebrow">Desktop Application · Python · PySide6</p>
+      <h3>Research Vault</h3>
+      <p class="project-desc">
+        A private, offline-first desktop application for organizing research
+        projects — complete with a Markdown editor, fast full-text search,
+        categories, local backups, and a dedicated <strong>Secure Vault</strong>
+        protected by real encryption (Argon2id + AES-256-GCM), built entirely
+        from scratch with a clean, layered architecture.
+      </p>
+      <ul class="project-features">
+        <li>Multi-project research manager with unlimited sections, notes &amp; sources</li>
+        <li>Full Markdown editor with live preview</li>
+        <li>SQLite FTS5-powered search across all content</li>
+        <li>Encrypted Secure Vault with multi-vault support &amp; brute-force throttling</li>
+        <li>Local backup/restore &amp; Markdown/JSON/Text export</li>
+        <li>Packaged as a native Windows installer</li>
+      </ul>
+      <div class="project-tags">
+        <span>Python</span>
+        <span>PySide6</span>
+        <span>SQLite</span>
+        <span>Cryptography</span>
+        <span>PyInstaller</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/WasifAli-IT/research-vault" target="_blank" class="btn btn-outline small">View Code</a>
+        <a href="https://github.com/WasifAli-IT/research-vault/releases/latest/download/ResearchVault-Setup.exe" class="btn btn-primary small">Download for Windows</a>
+      </div>
+    </div>
+    <div class="project-media">
+      <div class="browser-frame">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="screenshot-slider">
+          <img src="assets/screenshot-1.png" alt="Research Vault screenshot 1" class="slide active" />
+          <img src="assets/screenshot-2.png" alt="Research Vault screenshot 2" class="slide" />
+          <img src="assets/screenshot-3.png" alt="Research Vault screenshot 3" class="slide" />
+        </div>
+        <div class="slider-dots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="section-heading reveal">
+    <span class="section-number">03</span>
+    <h2>Skills</h2>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-pill">Python</div>
+    <div class="skill-pill">HTML</div>
+    <div class="skill-pill">CSS</div>
+    <div class="skill-pill">JavaScript</div>
+    <div class="skill-pill">SQLite</div>
+    <div class="skill-pill">Git &amp; GitHub</div>
+    <div class="skill-pill">PySide6</div>
+    <div class="skill-pill">Application Security</div>
+    <div class="skill-pill">Problem Solving</div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="section-heading reveal">
+    <span class="section-number">04</span>
+    <h2>Get In Touch</h2>
+  </div>
+  <div class="contact-box reveal">
+    <h3>Let's build something together.</h3>
+    <p>I'm open to opportunities, collaborations, and just talking about software. Feel free to reach out.</p>
+    <a href="mailto:wasifali19477@gmail.com" class="btn btn-primary">wasifali19477@gmail.com</a>
+    <div class="contact-socials">
+      <a href="https://github.com/WasifAli-IT" target="_blank">GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built by Wasif Ali · <span id="year"></span></p>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&#10094;</button>
+  <img src="" alt="Expanded screenshot" id="lightboxImg" />
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&#10095;</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
