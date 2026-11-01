@@ -688,6 +688,35 @@ function initTerminal() {
   if (!terminalInput || !terminalBody) return;
 
   const commands = {
+    help: `
+      <div class="text-secondary font-mono text-xs leading-relaxed">
+        <div class="text-cyan font-bold mb-1">// AVAILABLE TERMINAL COMMANDS:</div>
+        <div><span class="text-white font-bold">sysinfo</span>    - Display hardware telemetry, python runtime & vision core</div>
+        <div><span class="text-white font-bold">vision</span>     - Query Smart Vision Analyzer architecture specifications</div>
+        <div><span class="text-white font-bold">projects</span>   - List all classified systems in repository</div>
+        <div><span class="text-white font-bold">skills</span>     - Display technical arsenal & core competencies</div>
+        <div><span class="text-white font-bold">manifesto</span>  - Read engineering philosophy & core principles</div>
+        <div><span class="text-white font-bold">contact</span>    - Retrieve secure transmission channels & email</div>
+        <div><span class="text-white font-bold">clear</span>      - Clear terminal screen</div>
+      </div>
+    `,
+    projects: `
+      <div class="text-secondary font-mono text-xs leading-relaxed">
+        <div class="text-cyan font-bold mb-1">// CLASSIFIED SYSTEMS REPOSITORY:</div>
+        <div>[SYS_01] <span class="text-white font-bold">Smart Vision Analyzer</span> (AI / Real-time CCTV Hazard Localization)</div>
+        <div>[SYS_02] <span class="text-white font-bold">Research Vault</span> (Security / AES-256-GCM Air-Gapped Vault)</div>
+        <div>[SYS_03] <span class="text-white font-bold">Neural Sentinel Telemetry Bot</span> (Distributed NTFY / Telegram Gateway)</div>
+        <div>[SYS_04] <span class="text-white font-bold">Kinetic Vector Motion Engine</span> (Sub-millisecond Velocity Tracker)</div>
+      </div>
+    `,
+    contact: `
+      <div class="text-secondary font-mono text-xs leading-relaxed">
+        <div class="text-cyan font-bold mb-1">// SECURE TRANSMISSION CHANNELS:</div>
+        <div>DIRECT EMAIL : <span class="text-white font-bold">wasifali19477@gmail.com</span></div>
+        <div>GITHUB PROFILE: <span class="text-white font-bold">https://github.com/WasifAli-IT</span></div>
+        <div>LOCATION      : Lahore, Pakistan // CIT GCT</div>
+      </div>
+    `,
     sysinfo: `
       <div class="text-secondary">
         <div>// SYSTEM TELEMETRY SUMMARY</div>
