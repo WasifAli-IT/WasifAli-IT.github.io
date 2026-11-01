@@ -146,7 +146,7 @@ const PROJECTS_DATA = [
     title: "Kinetic Vector Motion Engine",
     tagline: "High-Speed Optical Velocity Tracker for Security Surveillance",
     desc: "A lightweight CPU-optimized motion vector engine utilizing downscaled morphological frame differencing and centroid tracking to measure kinetic energy spikes in security camera fields of view.",
-    image: "assets/smart-vision-preview.png",
+    image: "assets/smart-vision-hd.jpg",
     accentColor: "#f59e0b",
     tags: ["Python 3.14", "OpenCV", "NumPy Vectorization", "Kinetic Physics"],
     githubUrl: "https://github.com/WasifAli-IT",
