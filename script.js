@@ -111,7 +111,7 @@ const PROJECTS_DATA = [
     title: "Neural Sentinel Telemetry Bot",
     tagline: "Cloud Webhook Gateway for Remote Computer Vision Auditing",
     desc: "A headless distributed alert relay bridging CCTV cameras to Telegram and NTFY cloud endpoints, delivering instant snapshot verification, incident logging, and automated threat acknowledgment via secure webhooks.",
-    image: "assets/smart-vision-cloud-threat.jpg",
+    image: "assets/cyber-telemetry-hud.jpg",
     accentColor: "#10b981",
     tags: ["Python", "FastAPI / Requests", "Telegram Bot API", "NTFY Webhooks", "Docker"],
     githubUrl: "https://github.com/WasifAli-IT",
