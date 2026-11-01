@@ -1,192 +1,704 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Wasif Ali — Developer Portfolio</title>
-<link rel="stylesheet" href="style.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Wasif Ali // Autonomous AI & Defense Systems Architect</title>
+  <meta name="description" content="Immersive 3D WebGL Portfolio of Wasif Ali — AI Computer Vision, Deep Learning, Zero-Day Security, and High-Performance Software Systems." />
+  <meta name="keywords" content="Wasif Ali, AI Vision, Smart Vision Analyzer, Computer Vision, YOLO11, FaceNet, Google Gemini AI, Cyberpunk Portfolio, Three.js WebGL" />
+  <meta name="author" content="Wasif Ali" />
+  <meta name="theme-color" content="#04060a" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Wasif Ali // Autonomous AI & Defense Systems" />
+  <meta property="og:description" content="3D WebGL Portfolio showcasing the Cyber Blue Smart Vision Analyzer and High-Performance Software Engineering." />
+  <meta property="og:image" content="assets/smart-vision-preview.png" />
+
+  <!-- Cyber Fonts: Syne, Space Grotesk, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- CDNs: Three.js, GSAP, ScrollTrigger, Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 </head>
-<body>
+<body class="cyber-body">
 
-<div class="bg-glow"></div>
+  <!-- 3D WebGL Background Canvas -->
+  <canvas id="webgl-canvas" class="webgl-canvas"></canvas>
 
-<nav class="navbar">
-  <div class="logo">Wasif<span>.</span></div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <!-- Ambient CRT Scanline Overlay -->
+  <div class="crt-overlay" aria-hidden="true"></div>
 
-<header class="hero" id="home">
-  <div class="hero-content reveal">
-    <p class="hero-greeting">Hello, I'm</p>
-    <h1 class="hero-name">Wasif Ali</h1>
-    <h2 class="hero-tagline">
-      <span class="typed-text"></span><span class="cursor">|</span>
-    </h2>
-    <p class="hero-desc">
-      I build practical, secure software from the ground up — currently focused
-      on Python and web development, with a passion for turning ideas into
-      real, working applications.
-    </p>
-    <div class="hero-buttons">
-      <a href="#projects" class="btn btn-primary">View My Work</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
-    </div>
-    <div class="hero-socials">
-      <a href="https://github.com/WasifAli-IT" target="_blank" aria-label="GitHub">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56 0-.27-.01-1-.02-1.97-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.26-1.28-5.26-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.73.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.4-5.27 5.68.42.36.78 1.07.78 2.17 0 1.56-.01 2.82-.01 3.2 0 .31.2.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
+  <!-- Custom Futuristic Cyber Cursor -->
+  <div id="cyber-cursor" class="cyber-cursor" aria-hidden="true"></div>
+  <div id="cyber-cursor-follower" class="cyber-cursor-follower" aria-hidden="true">
+    <div class="cursor-crosshair"></div>
+  </div>
+  <div id="cyber-cursor-hud" class="cyber-cursor-hud" aria-hidden="true">
+    <span class="hud-coords">X:000 Y:000</span>
+  </div>
+
+  <!-- Cyber Navigation Bar -->
+  <header class="cyber-nav-container">
+    <nav class="cyber-nav">
+      <a href="#hero" class="nav-brand magnetic-item" data-cursor="TARGET">
+        <span class="brand-bracket">[</span>
+        <span class="brand-text">WASIF<span class="accent-dot">.</span>SYS</span>
+        <span class="brand-bracket">]</span>
       </a>
-      <a href="mailto:wasifali19477@gmail.com" aria-label="Email">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm19.4 2H2.6L12 12.5 21.4 6ZM1 7.4V18h22V7.4l-10.5 7a1 1 0 0 1-1 0L1 7.4Z"/></svg>
-      </a>
-    </div>
-  </div>
-  <div class="scroll-indicator"><span></span></div>
-</header>
 
-<section class="section" id="about">
-  <div class="section-heading reveal">
-    <span class="section-number">01</span>
-    <h2>About Me</h2>
-  </div>
-  <div class="about-grid reveal">
-    <div class="about-text">
-      <p>
-        I'm Wasif Ali, a student developer learning web development and Python.
-        I recently built <strong>Research Vault</strong>, a fully offline,
-        encryption-secured research management desktop application — applying
-        real software architecture, security best practices, and UI polish from
-        the ground up.
-      </p>
-      <p>
-        I'm continuously building my skills, learning by doing, and looking
-        for opportunities to grow as a developer. I care about writing clean,
-        well-structured code and genuinely understanding how the systems I
-        build actually work — not just making them run.
-      </p>
-    </div>
-    <div class="about-highlights">
-      <div class="highlight-card">
-        <h3>01</h3>
-        <p>Full offline-first desktop application shipped, tested &amp; packaged</p>
+      <div class="nav-status-pill">
+        <span class="status-indicator-dot"></span>
+        <span class="status-label">DEFENSE_CORE: <span class="text-glow-cyan">ONLINE</span></span>
+        <span class="status-fps" id="nav-fps">60 FPS</span>
       </div>
-      <div class="highlight-card">
-        <h3>104</h3>
-        <p>Automated tests written and passing</p>
-      </div>
-      <div class="highlight-card">
-        <h3>AES-256</h3>
-        <p>Real encryption implemented for a secure vault feature</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="section" id="projects">
-  <div class="section-heading reveal">
-    <span class="section-number">02</span>
-    <h2>Featured Project</h2>
-  </div>
-
-  <div class="project-card reveal">
-    <div class="project-info">
-      <p class="project-eyebrow">Desktop Application · Python · PySide6</p>
-      <h3>Research Vault</h3>
-      <p class="project-desc">
-        A private, offline-first desktop application for organizing research
-        projects — complete with a Markdown editor, fast full-text search,
-        categories, local backups, and a dedicated <strong>Secure Vault</strong>
-        protected by real encryption (Argon2id + AES-256-GCM), built entirely
-        from scratch with a clean, layered architecture.
-      </p>
-      <ul class="project-features">
-        <li>Multi-project research manager with unlimited sections, notes &amp; sources</li>
-        <li>Full Markdown editor with live preview</li>
-        <li>SQLite FTS5-powered search across all content</li>
-        <li>Encrypted Secure Vault with multi-vault support &amp; brute-force throttling</li>
-        <li>Local backup/restore &amp; Markdown/JSON/Text export</li>
-        <li>Packaged as a native Windows installer</li>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link magnetic-item" data-text="00.ORIGIN">00.ORIGIN</a></li>
+        <li><a href="#flagship" class="nav-link magnetic-item" data-text="01.SMART_VISION">01.SMART_VISION</a></li>
+        <li><a href="#projects" class="nav-link magnetic-item" data-text="02.SYSTEMS">02.SYSTEMS</a></li>
+        <li><a href="#arsenal" class="nav-link magnetic-item" data-text="03.ARSENAL">03.ARSENAL</a></li>
+        <li><a href="#terminal" class="nav-link magnetic-item" data-text="04.TERMINAL">04.TERMINAL</a></li>
+        <li><a href="#contact" class="nav-link magnetic-item" data-text="05.TRANSMIT">05.TRANSMIT</a></li>
       </ul>
-      <div class="project-tags">
-        <span>Python</span>
-        <span>PySide6</span>
-        <span>SQLite</span>
-        <span>Cryptography</span>
-        <span>PyInstaller</span>
+
+      <div class="nav-actions">
+        <button id="audio-toggle-btn" class="audio-toggle-btn magnetic-item" aria-label="Toggle Cyber Acoustic Feedback" data-cursor="AUDIO">
+          <span class="audio-wave">
+            <span></span><span></span><span></span><span></span>
+          </span>
+          <span class="audio-label">FX: OFF</span>
+        </button>
+
+        <a href="#contact" class="cyber-btn cyber-btn-sm magnetic-item" data-cursor="CONNECT">
+          <span class="btn-bracket">&lt;</span>
+          <span class="btn-text">DEPLOY INTEL</span>
+          <span class="btn-bracket">&gt;</span>
+        </a>
       </div>
-      <div class="project-links">
-        <a href="https://github.com/WasifAli-IT/research-vault" target="_blank" class="btn btn-outline small">View Code</a>
-        <a href="https://github.com/WasifAli-IT/research-vault/releases/latest/download/ResearchVault-Setup.exe" class="btn btn-primary small">Download for Windows</a>
-      </div>
+
+      <!-- Mobile Hamburger -->
+      <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div class="mobile-drawer-header">
+      <span class="text-cyan font-mono">// NAVIGATION PROTOCOL</span>
+      <button class="mobile-drawer-close" id="mobile-drawer-close">&times;</button>
     </div>
-    <div class="project-media">
-      <div class="browser-frame">
-        <div class="browser-dots"><span></span><span></span><span></span></div>
-        <div class="screenshot-slider">
-          <img src="assets/screenshot-1.png" alt="Research Vault screenshot 1" class="slide active" />
-          <img src="assets/screenshot-2.png" alt="Research Vault screenshot 2" class="slide" />
-          <img src="assets/screenshot-3.png" alt="Research Vault screenshot 3" class="slide" />
+    <ul class="mobile-nav-links">
+      <li><a href="#hero" class="mobile-link">00 // ORIGIN (HOME)</a></li>
+      <li><a href="#flagship" class="mobile-link">01 // SMART VISION ANALYZER</a></li>
+      <li><a href="#projects" class="mobile-link">02 // MODULAR SYSTEMS MATRIX</a></li>
+      <li><a href="#arsenal" class="mobile-link">03 // TECHNICAL ARSENAL</a></li>
+      <li><a href="#terminal" class="mobile-link">04 // ARCHITECT CONSOLE</a></li>
+      <li><a href="#contact" class="mobile-link">05 // SECURE TRANSMIT</a></li>
+    </ul>
+    <div class="mobile-drawer-footer">
+      <p class="font-mono text-muted text-xs">WASIF ALI · CIT GCT · DEFENSE SUITE 2026</p>
+    </div>
+  </div>
+
+  <!-- Main Scroll Container -->
+  <main class="cyber-main" id="content">
+
+    <!-- ================================================================= -->
+    <!-- SECTION 00: HERO (CYBERPUNK MINIMALISM & 3D DATA MESH)             -->
+    <!-- ================================================================= -->
+    <section class="section-hero" id="hero">
+      <div class="hero-corner-hud top-left font-mono">
+        <span class="hud-line">LAT: 31.5204° N // LON: 74.3587° E</span>
+        <span class="hud-line">SYS_NODE: ALPHA-7 // ARCH_x64</span>
+      </div>
+      <div class="hero-corner-hud top-right font-mono">
+        <span class="hud-line">PROTOCOL: ZERO_DAY_SECURITY</span>
+        <span class="hud-line">ENCRYPTION: AES-256-GCM / ARGON2</span>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge-row">
+          <div class="cyber-pill-tag">
+            <span class="pill-dot"></span>
+            <span class="pill-text">AUTONOMOUS COMPUTER VISION &amp; AI ARCHITECT</span>
+          </div>
+          <span class="badge-separator">//</span>
+          <span class="hero-telemetry font-mono text-cyan">LATENCY: 0.12ms</span>
         </div>
-        <div class="slider-dots">
-          <span class="dot active" data-index="0"></span>
-          <span class="dot" data-index="1"></span>
-          <span class="dot" data-index="2"></span>
+
+        <h1 class="hero-title" data-scramble="WASIF ALI">
+          <span class="hero-letter">W</span><span class="hero-letter">A</span><span class="hero-letter">S</span><span class="hero-letter">I</span><span class="hero-letter">F</span>
+          <span class="hero-space"> </span>
+          <span class="hero-letter text-glow-cyan">A</span><span class="hero-letter text-glow-cyan">L</span><span class="hero-letter text-glow-cyan">I</span>
+        </h1>
+
+        <div class="hero-subtitle-container">
+          <p class="hero-subtitle font-mono">
+            <span class="prompt-arrow">&gt;</span>
+            <span id="typed-scrambler" class="typed-scrambler">ENGINEERING NEXT-GEN DEFENSE SUITES &amp; AI SURVEILLANCE</span>
+            <span class="cursor-blink">_</span>
+          </p>
         </div>
+
+        <p class="hero-manifesto">
+          Bridging physical security, edge deep learning, and multimodal cloud reasoning. Creator of 
+          <span class="text-white font-semibold">Smart Vision Analyzer</span> — a zero-lag AI defense platform 
+          delivering real-time weapon detection, kinetic brawl mitigation, and encrypted biometric intelligence.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#flagship" class="cyber-btn cyber-btn-primary magnetic-item" data-cursor="EXPLORE">
+            <span class="btn-glitch-bg"></span>
+            <span class="btn-text">EXPLORE FLAGSHIP DEFENSE</span>
+            <span class="btn-icon">→</span>
+          </a>
+          <a href="#projects" class="cyber-btn cyber-btn-ghost magnetic-item" data-cursor="SYSTEMS">
+            <span class="btn-text">SYSTEMS REPOSITORY</span>
+          </a>
+          <a href="https://github.com/WasifAli-IT" target="_blank" rel="noopener" class="cyber-btn cyber-btn-icon magnetic-item" aria-label="GitHub Profile" data-cursor="GITHUB">
+            <svg class="svg-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path fill="currentColor" d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56 0-.27-.01-1-.02-1.97-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.26-1.28-5.26-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.73.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.4-5.27 5.68.42.36.78 1.07.78 2.17 0 1.56-.01 2.82-.01 3.2 0 .31.2.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="hero-stats-strip">
+          <div class="stat-card">
+            <span class="stat-value font-mono text-cyan" data-counter="60">60+</span>
+            <span class="stat-label">FPS Real-Time Vision</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-value font-mono text-cyan" data-counter="2">2.0s</span>
+            <span class="stat-label">Cloud AI Sentinel Loop</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-value font-mono text-cyan" data-counter="512">512-D</span>
+            <span class="stat-label">FaceNet Vector Space</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-value font-mono text-cyan">&lt;0.3ms</span>
+            <span class="stat-label">CPU Edge Execution</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-cue">
+        <span class="font-mono text-xs text-muted">SCROLL TO INITIALIZE</span>
+        <div class="scroll-laser-line"></div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 01: FLAGSHIP SHOWCASE // SMART VISION ANALYZER             -->
+    <!-- ================================================================= -->
+    <section class="section-flagship" id="flagship" data-theme-color="#00f0ff">
+      <div class="section-header-row">
+        <div class="section-tag-group">
+          <span class="cyber-bracket">[</span>
+          <span class="font-mono text-cyan text-sm">FLAGSHIP CASE STUDY 01 // AUTONOMOUS DEFENSE</span>
+          <span class="cyber-bracket">]</span>
+        </div>
+        <div class="section-rule-line"></div>
+        <span class="font-mono text-muted text-xs">// STATUS: DEPLOYED &amp; OPERATIONAL</span>
+      </div>
+
+      <div class="flagship-hero-grid">
+        <div class="flagship-text-column">
+          <div class="flagship-eyebrow font-mono">
+            <span class="text-cyan">CCTV SURVEILLANCE SUITE</span> · DUAL-TIER NEURAL ARCHITECTURE
+          </div>
+          <h2 class="flagship-title">
+            CYBER BLUE<br />
+            <span class="text-glow-cyan">SMART VISION</span><br />
+            ANALYZER
+          </h2>
+
+          <p class="flagship-lead">
+            An advanced physical security analyzer built to autonomously detect firearms, 
+            violent altercations, kinetic struggles, and unauthorized personnel in real-time CCTV streams 
+            without expensive GPUs.
+          </p>
+
+          <p class="flagship-body text-secondary">
+            Engineered with a hybrid architecture: local <strong>YOLO11</strong> runs at 60 FPS for instant 
+            zero-latency weapon localization, while a concurrent <strong>Google Gemini Flash Multimodal Cloud Sentinel</strong> 
+            audits the scene every 2.0 seconds for complex contextual brawls, armed robberies, and property vandalism — instantly 
+            broadcasting evidence snapshots directly to mobile lockscreens via encrypted push gateways.
+          </p>
+
+          <!-- Core System Pillars -->
+          <div class="flagship-features-grid">
+            <div class="feature-card">
+              <div class="feature-icon font-mono text-cyan">01 // EDGE</div>
+              <h4 class="feature-title">YOLO11 Edge Hazard Detection</h4>
+              <p class="feature-desc">Calibrated with geometric aspect-ratio sanity checks to permanently eliminate chair and furniture false positives.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon font-mono text-cyan">02 // CLOUD</div>
+              <h4 class="feature-title">2.0s Cloud Sentinel AI</h4>
+              <p class="feature-desc">Multimodal Gemini Flash reasoning continuously delivers scene narratives, threat classifications, and tactical instructions.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon font-mono text-cyan">03 // BIOMETRIC</div>
+              <h4 class="feature-title">FaceNet 512-D Recognition</h4>
+              <p class="feature-desc">Inception-ResNet FaceNet vector embeddings with anti-spoof liveness and multi-angle database enrollment.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon font-mono text-cyan">04 // TELEMETRY</div>
+              <h4 class="feature-title">Mobile Push Gateway</h4>
+              <p class="feature-desc">Encrypted NTFY &amp; Telegram push relays instantly delivering HD CCTV evidence photos to mobile lockscreens worldwide.</p>
+            </div>
+          </div>
+
+          <div class="flagship-tags-wrap">
+            <span class="cyber-tech-pill">Python 3.14</span>
+            <span class="cyber-tech-pill">YOLO11 Edge</span>
+            <span class="cyber-tech-pill">Gemini 3.5 Flash</span>
+            <span class="cyber-tech-pill">FaceNet (512-D)</span>
+            <span class="cyber-tech-pill">OpenCV Multi-Threading</span>
+            <span class="cyber-tech-pill">CustomTkinter HUD</span>
+            <span class="cyber-tech-pill">NTFY Push Gateway</span>
+            <span class="cyber-tech-pill">SQLite Evidence Vault</span>
+          </div>
+
+          <div class="flagship-actions">
+            <a href="https://github.com/WasifAli-IT" target="_blank" rel="noopener" class="cyber-btn cyber-btn-primary magnetic-item" data-cursor="GITHUB">
+              <span class="btn-text">EXPLORE REPOSITORY</span>
+              <span class="btn-icon">↗</span>
+            </a>
+            <button class="cyber-btn cyber-btn-ghost magnetic-item" id="open-smartvision-modal" data-cursor="DEEP_DIVE">
+              <span class="btn-text">ARCHITECTURE SPECS</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Holographic Interactive Showcase Lens -->
+        <div class="flagship-media-column">
+          <div class="cyber-hologram-frame">
+            <div class="hologram-top-bar font-mono">
+              <div class="hologram-lights">
+                <span class="light red"></span>
+                <span class="light yellow"></span>
+                <span class="light green"></span>
+              </div>
+              <div class="hologram-feed-id">
+                <span class="record-pulse"></span>
+                <span>CAM_FEED_01 // SECURE_SURVEILLANCE_CHANNEL</span>
+              </div>
+              <div class="hologram-meta">
+                <span class="text-cyan">AI: ACTIVE</span>
+              </div>
+            </div>
+
+            <div class="hologram-viewport" id="hologram-viewport">
+              <!-- Animated Scanning Laser Sweep -->
+              <div class="scan-laser-line"></div>
+              <div class="grid-mesh-overlay"></div>
+
+              <!-- Optical Targeting Reticle -->
+              <div class="optic-reticle center"></div>
+              <div class="optic-bracket top-left"></div>
+              <div class="optic-bracket top-right"></div>
+              <div class="optic-bracket bottom-left"></div>
+              <div class="optic-bracket bottom-right"></div>
+
+              <!-- Active Media Views (Tab Controlled) -->
+              <div class="media-view-container">
+                <!-- View 1: Main GUI Preview -->
+                <div class="media-view active" id="view-dashboard">
+                  <img src="assets/smart-vision-preview.png" alt="Smart Vision Analyzer Cyber Dashboard" class="hologram-img" />
+                  
+                  <!-- HUD Overlays on top of the image -->
+                  <div class="hud-target-box box-weapon">
+                    <span class="target-label font-mono">⚠ FIREARM // CONF: 0.94</span>
+                  </div>
+                  <div class="hud-target-box box-subject">
+                    <span class="target-label font-mono">SUBJECT // UNKNOWN [ALERT]</span>
+                  </div>
+                  <div class="hud-telemetry-badge">
+                    <span class="font-mono text-cyan text-xs">CLOUD SENTINEL: 2.0s LOOP</span>
+                    <span class="font-mono text-white text-xs">STATUS: CRITICAL THREAT DETECTED</span>
+                  </div>
+                </div>
+
+                <!-- View 2: Evidence Snapshot View -->
+                <div class="media-view" id="view-evidence">
+                  <img src="assets/smart-vision-cloud-threat.jpg" alt="Smart Vision Evidence Capture" class="hologram-img" />
+                  <div class="hud-target-box box-evidence-banner">
+                    <span class="target-label font-mono">EVIDENCE CAPTURED // DISPATCHED TO OPERATOR MOBILE</span>
+                  </div>
+                </div>
+
+                <!-- View 3: Architecture Diagram -->
+                <div class="media-view" id="view-arch">
+                  <div class="arch-svg-container">
+                    <svg viewBox="0 0 600 380" class="arch-svg">
+                      <defs>
+                        <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8"/>
+                          <stop offset="100%" stop-color="#0077ff" stop-opacity="0.8"/>
+                        </linearGradient>
+                      </defs>
+                      <!-- Pipeline Nodes -->
+                      <rect x="20" y="50" width="140" height="70" rx="8" fill="#080e18" stroke="#00f0ff" stroke-width="2"/>
+                      <text x="90" y="80" fill="#00f0ff" font-family="JetBrains Mono" font-size="12" text-anchor="middle" font-weight="bold">CCTV SENSOR</text>
+                      <text x="90" y="100" fill="#8b9bb4" font-family="Space Grotesk" font-size="10" text-anchor="middle">USB / IP Webcam (60FPS)</text>
+
+                      <line x1="160" y1="85" x2="230" y2="85" stroke="#00f0ff" stroke-width="2" stroke-dasharray="4 4" class="dash-anim"/>
+
+                      <rect x="230" y="30" width="160" height="80" rx="8" fill="#080e18" stroke="#00f0ff" stroke-width="2"/>
+                      <text x="310" y="60" fill="#00f0ff" font-family="JetBrains Mono" font-size="12" text-anchor="middle" font-weight="bold">YOLO11 EDGE</text>
+                      <text x="310" y="80" fill="#8b9bb4" font-family="Space Grotesk" font-size="10" text-anchor="middle">Weapon &amp; Hazard (&lt;0.3ms)</text>
+                      <text x="310" y="95" fill="#10b981" font-family="JetBrains Mono" font-size="9" text-anchor="middle">Anti-False Positive Filter</text>
+
+                      <line x1="390" y1="70" x2="450" y2="70" stroke="#00f0ff" stroke-width="2"/>
+
+                      <rect x="230" y="140" width="160" height="80" rx="8" fill="#080e18" stroke="#a855f7" stroke-width="2"/>
+                      <text x="310" y="170" fill="#a855f7" font-family="JetBrains Mono" font-size="12" text-anchor="middle" font-weight="bold">FACENET 512-D</text>
+                      <text x="310" y="190" fill="#8b9bb4" font-family="Space Grotesk" font-size="10" text-anchor="middle">Inception-ResNet Vector</text>
+                      <text x="310" y="205" fill="#f59e0b" font-family="JetBrains Mono" font-size="9" text-anchor="middle">Liveness Anti-Spoof</text>
+
+                      <line x1="160" y1="105" x2="230" y2="180" stroke="#a855f7" stroke-width="2" stroke-dasharray="4 4" class="dash-anim"/>
+
+                      <rect x="230" y="250" width="160" height="80" rx="8" fill="#080e18" stroke="#00f0ff" stroke-width="2"/>
+                      <text x="310" y="280" fill="#00f0ff" font-family="JetBrains Mono" font-size="12" text-anchor="middle" font-weight="bold">CLOUD SENTINEL</text>
+                      <text x="310" y="300" fill="#8b9bb4" font-family="Space Grotesk" font-size="10" text-anchor="middle">Google Gemini Flash (2.0s)</text>
+                      <text x="310" y="315" fill="#00f0ff" font-family="JetBrains Mono" font-size="9" text-anchor="middle">Brawls · Robbery · Violence</text>
+
+                      <line x1="90" y1="120" x2="90" y2="290" stroke="#00f0ff" stroke-width="2" stroke-dasharray="4 4" class="dash-anim"/>
+                      <line x1="90" y1="290" x2="230" y2="290" stroke="#00f0ff" stroke-width="2" stroke-dasharray="4 4" class="dash-anim"/>
+
+                      <rect x="450" y="140" width="135" height="100" rx="8" fill="#080e18" stroke="#ff0055" stroke-width="2"/>
+                      <text x="517" y="170" fill="#ff0055" font-family="JetBrains Mono" font-size="12" text-anchor="middle" font-weight="bold">ALERT GATEWAY</text>
+                      <text x="517" y="195" fill="#ffffff" font-family="Space Grotesk" font-size="10" text-anchor="middle">NTFY + Telegram Push</text>
+                      <text x="517" y="215" fill="#8b9bb4" font-family="JetBrains Mono" font-size="9" text-anchor="middle">HD Evidence Capture</text>
+
+                      <line x1="390" y1="180" x2="450" y2="180" stroke="#a855f7" stroke-width="2"/>
+                      <line x1="390" y1="290" x2="517" y2="290" stroke="#00f0ff" stroke-width="2"/>
+                      <line x1="517" y1="290" x2="517" y2="240" stroke="#ff0055" stroke-width="2"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Holographic Interactive Mode Selector -->
+            <div class="hologram-controls-bar">
+              <button class="hologram-btn active" data-view="view-dashboard">
+                <span class="btn-indicator"></span>
+                <span>CYBER HUD DASHBOARD</span>
+              </button>
+              <button class="hologram-btn" data-view="view-evidence">
+                <span class="btn-indicator"></span>
+                <span>EVIDENCE CAPTURE</span>
+              </button>
+              <button class="hologram-btn" data-view="view-arch">
+                <span class="btn-indicator"></span>
+                <span>PIPELINE ARCHITECTURE</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 02: MODULAR PROJECT MATRIX (FUTURE-PROOF SCALABLE GRID)   -->
+    <!-- ================================================================= -->
+    <section class="section-projects" id="projects">
+      <div class="section-header-row">
+        <div class="section-tag-group">
+          <span class="cyber-bracket">[</span>
+          <span class="font-mono text-cyan text-sm">02 // CLASSIFIED SYSTEMS REPOSITORY</span>
+          <span class="cyber-bracket">]</span>
+        </div>
+        <div class="section-rule-line"></div>
+        <span class="font-mono text-muted text-xs">// MODULAR REGISTRY</span>
+      </div>
+
+      <div class="projects-intro-row">
+        <div>
+          <h2 class="section-heading-large">
+            MODULAR<br />
+            <span class="text-glow-cyan">PROJECT MATRIX</span>
+          </h2>
+          <p class="section-subheading text-secondary">
+            Each project dynamically shifts the 3D WebGL particle lattice and atmospheric lighting.
+            Built with a modular data schema for seamless future additions.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="project-filter-tabs">
+          <button class="filter-tab active" data-filter="all">ALL SYSTEMS</button>
+          <button class="filter-tab" data-filter="ai">AI &amp; VISION</button>
+          <button class="filter-tab" data-filter="security">CRYPTOGRAPHY</button>
+          <button class="filter-tab" data-filter="python">CORE PYTHON</button>
+        </div>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="projects-grid" id="projects-grid">
+        <!-- Rendered dynamically by script.js from the modular data registry -->
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 03: TECHNICAL ARSENAL (SKILLS & CAPABILITIES MATRIX)       -->
+    <!-- ================================================================= -->
+    <section class="section-arsenal" id="arsenal">
+      <div class="section-header-row">
+        <div class="section-tag-group">
+          <span class="cyber-bracket">[</span>
+          <span class="font-mono text-cyan text-sm">03 // CORE COMPETENCIES MATRIX</span>
+          <span class="cyber-bracket">]</span>
+        </div>
+        <div class="section-rule-line"></div>
+        <span class="font-mono text-muted text-xs">// HARDENED TECH STACK</span>
+      </div>
+
+      <h2 class="section-heading-large">
+        TECHNICAL<br />
+        <span class="text-glow-cyan">ARSENAL</span>
+      </h2>
+
+      <div class="arsenal-quad-grid">
+        <!-- Quadrant 1 -->
+        <div class="arsenal-card" data-accent="#00f0ff">
+          <div class="card-accent-bar" style="background: #00f0ff;"></div>
+          <div class="arsenal-header">
+            <span class="arsenal-number font-mono text-cyan">QUAD_01</span>
+            <h3 class="arsenal-title">Computer Vision &amp; Deep Learning</h3>
+          </div>
+          <p class="arsenal-desc">Real-time object localization, multi-class threat classifiers, and facial biometrics.</p>
+          <ul class="arsenal-skill-list font-mono">
+            <li><span class="skill-bullet">▸</span> YOLO11 / YOLOv8 Real-Time Detection</li>
+            <li><span class="skill-bullet">▸</span> FaceNet Inception-ResNet (512-D)</li>
+            <li><span class="skill-bullet">▸</span> Google Gemini Flash Vision API</li>
+            <li><span class="skill-bullet">▸</span> OpenCV &amp; Optical Motion Flow</li>
+            <li><span class="skill-bullet">▸</span> PyTorch CPU Multi-threading</li>
+          </ul>
+        </div>
+
+        <!-- Quadrant 2 -->
+        <div class="arsenal-card" data-accent="#a855f7">
+          <div class="card-accent-bar" style="background: #a855f7;"></div>
+          <div class="arsenal-header">
+            <span class="arsenal-number font-mono" style="color: #a855f7;">QUAD_02</span>
+            <h3 class="arsenal-title">Security &amp; Cryptography</h3>
+          </div>
+          <p class="arsenal-desc">Zero-compromise application security, vault architecture, and anti-spoof verification.</p>
+          <ul class="arsenal-skill-list font-mono">
+            <li><span class="skill-bullet">▸</span> AES-256-GCM Authenticated Encryption</li>
+            <li><span class="skill-bullet">▸</span> Argon2id Password Key Derivation</li>
+            <li><span class="skill-bullet">▸</span> Biometric Anti-Spoof Liveness Tracking</li>
+            <li><span class="skill-bullet">▸</span> CCTV Evidence Watermarking &amp; Hashes</li>
+            <li><span class="skill-bullet">▸</span> Brute-Force Rate Limiting &amp; Zeroization</li>
+          </ul>
+        </div>
+
+        <!-- Quadrant 3 -->
+        <div class="arsenal-card" data-accent="#10b981">
+          <div class="card-accent-bar" style="background: #10b981;"></div>
+          <div class="arsenal-header">
+            <span class="arsenal-number font-mono" style="color: #10b981;">QUAD_03</span>
+            <h3 class="arsenal-title">Systems Architecture &amp; Python</h3>
+          </div>
+          <p class="arsenal-desc">Thread-isolated concurrency models preserving 60 FPS performance on standard hardware.</p>
+          <ul class="arsenal-skill-list font-mono">
+            <li><span class="skill-bullet">▸</span> Python 3.14 Concurrent Execution</li>
+            <li><span class="skill-bullet">▸</span> Non-Blocking Producer/Consumer Queues</li>
+            <li><span class="skill-bullet">▸</span> SQLite FTS5 Full-Text Search Engine</li>
+            <li><span class="skill-bullet">▸</span> CustomTkinter &amp; PySide6 GUI Frameworks</li>
+            <li><span class="skill-bullet">▸</span> Native Windows Packaging (PyInstaller)</li>
+          </ul>
+        </div>
+
+        <!-- Quadrant 4 -->
+        <div class="arsenal-card" data-accent="#f59e0b">
+          <div class="card-accent-bar" style="background: #f59e0b;"></div>
+          <div class="arsenal-header">
+            <span class="arsenal-number font-mono" style="color: #f59e0b;">QUAD_04</span>
+            <h3 class="arsenal-title">Full-Stack &amp; WebGL Systems</h3>
+          </div>
+          <p class="arsenal-desc">High-speed interactive interfaces, 3D WebGL rendering, and distributed alert networks.</p>
+          <ul class="arsenal-skill-list font-mono">
+            <li><span class="skill-bullet">▸</span> Three.js 3D WebGL Shaders &amp; Particles</li>
+            <li><span class="skill-bullet">▸</span> Modern ES6+ JavaScript &amp; Web Audio API</li>
+            <li><span class="skill-bullet">▸</span> Responsive Cinematic CSS Architecture</li>
+            <li><span class="skill-bullet">▸</span> NTFY &amp; Telegram Push Webhook Gateways</li>
+            <li><span class="skill-bullet">▸</span> Git / GitHub Version Controlled CI/CD</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 04: INTERACTIVE CYBER TERMINAL // ABOUT & MISSION         -->
+    <!-- ================================================================= -->
+    <section class="section-terminal" id="terminal">
+      <div class="section-header-row">
+        <div class="section-tag-group">
+          <span class="cyber-bracket">[</span>
+          <span class="font-mono text-cyan text-sm">04 // ARCHITECT CONSOLE</span>
+          <span class="cyber-bracket">]</span>
+        </div>
+        <div class="section-rule-line"></div>
+        <span class="font-mono text-muted text-xs">// INTERACTIVE SHELL</span>
+      </div>
+
+      <div class="terminal-shell">
+        <div class="terminal-shell-header">
+          <div class="terminal-buttons">
+            <span class="term-btn term-close"></span>
+            <span class="term-btn term-min"></span>
+            <span class="term-btn term-max"></span>
+          </div>
+          <div class="terminal-title font-mono">wasif@defense-suite-core:~ (bash)</div>
+          <div class="terminal-quick-cmds font-mono">
+            <button class="cmd-pill" data-cmd="sysinfo">[ sysinfo ]</button>
+            <button class="cmd-pill" data-cmd="vision">[ vision ]</button>
+            <button class="cmd-pill" data-cmd="manifesto">[ manifesto ]</button>
+            <button class="cmd-pill" data-cmd="clear">[ clear ]</button>
+          </div>
+        </div>
+
+        <div class="terminal-body font-mono" id="terminal-body">
+          <div class="terminal-line text-muted">Smart Vision Architecture Shell v2.4.0 (x86_64-pc-windows)</div>
+          <div class="terminal-line text-muted">Type or click commands above to query system architecture.</div>
+          <div class="terminal-line">&nbsp;</div>
+          <div class="terminal-line">
+            <span class="text-cyan">wasif@defense-suite:~$</span> <span class="term-text">cat about.txt</span>
+          </div>
+          <div class="terminal-output">
+            <p class="text-white font-sans">
+              I am Wasif Ali, a software engineer and AI researcher specializing in high-performance computer vision, 
+              applied cryptography, and system-level desktop architecture. Based in Pakistan, studying DAE CIT at Government 
+              College of Technology (GCT).
+            </p>
+            <p class="text-secondary font-sans mt-2">
+              My engineering philosophy is simple: software must solve real, high-consequence problems. Rather than toy wrappers, 
+              I build robust, test-covered applications from scratch — whether it's offline encryption vaults or AI defense suites 
+              protecting physical facilities.
+            </p>
+          </div>
+          <div class="terminal-line terminal-input-row" id="terminal-input-row">
+            <span class="text-cyan">wasif@defense-suite:~$</span>
+            <input type="text" class="terminal-input" id="terminal-input" placeholder="try 'sysinfo', 'vision', 'help'..." autocomplete="off" spellcheck="false" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 05: SECURE TRANSMIT // CONTACT & COLLABORATION            -->
+    <!-- ================================================================= -->
+    <section class="section-contact" id="contact">
+      <div class="section-header-row">
+        <div class="section-tag-group">
+          <span class="cyber-bracket">[</span>
+          <span class="font-mono text-cyan text-sm">05 // SECURE TRANSMISSION</span>
+          <span class="cyber-bracket">]</span>
+        </div>
+        <div class="section-rule-line"></div>
+        <span class="font-mono text-muted text-xs">// ENCRYPTED RELAY</span>
+      </div>
+
+      <div class="contact-card-frame">
+        <div class="contact-glow-orb"></div>
+        <div class="contact-content">
+          <span class="font-mono text-cyan text-xs">// STATUS: ACCEPTING HIGH-IMPACT INITIATIVES</span>
+          <h2 class="contact-title">
+            LET'S ARCHITECT<br />
+            <span class="text-glow-cyan">THE FUTURE</span>
+          </h2>
+          <p class="contact-desc text-secondary">
+            Interested in deploying autonomous AI surveillance, collaborating on cutting-edge deep learning systems, 
+            or discussing software engineering roles? Initiate transmission below.
+          </p>
+
+          <div class="contact-interactive-box">
+            <div class="email-display-row">
+              <span class="font-mono text-cyan text-sm">TRANSMIT_TARGET:</span>
+              <span class="email-address font-mono" id="email-address">wasifali19477@gmail.com</span>
+              <button class="cyber-btn cyber-btn-sm magnetic-item" id="copy-email-btn" data-cursor="COPY">
+                <span class="btn-text" id="copy-btn-text">COPY ADDRESS</span>
+              </button>
+            </div>
+
+            <div class="contact-links-row">
+              <a href="mailto:wasifali19477@gmail.com" class="cyber-btn cyber-btn-primary magnetic-item" data-cursor="MAIL">
+                <span class="btn-text">OPEN SECURE EMAIL CLIENT</span>
+                <span class="btn-icon">↗</span>
+              </a>
+              <a href="https://github.com/WasifAli-IT" target="_blank" rel="noopener" class="cyber-btn cyber-btn-ghost magnetic-item" data-cursor="GITHUB">
+                <span class="btn-text">GITHUB PROFILE</span>
+                <span class="btn-icon">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Cyber Coordinates Footer -->
+  <footer class="cyber-footer">
+    <div class="footer-container font-mono">
+      <div class="footer-left">
+        <span class="text-cyan">WASIF ALI</span> // DEFENSE SYSTEMS SUITE © <span id="footer-year">2026</span>
+      </div>
+      <div class="footer-center">
+        <span>GCT LAHORE · DAE CIT · AUTONOMOUS AI</span>
+      </div>
+      <div class="footer-right">
+        <span class="status-indicator-dot small"></span>
+        <span>ALL SYSTEMS NOMINAL</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================================= -->
+  <!-- MODULAR CASE STUDY DRAWER // DETAILED ARCHITECTURE POPUP          -->
+  <!-- ================================================================= -->
+  <div class="cyber-modal-overlay" id="project-modal" aria-hidden="true">
+    <div class="cyber-modal-container">
+      <div class="modal-header">
+        <div class="modal-header-meta font-mono">
+          <span class="text-cyan" id="modal-project-id">// SPECIFICATION DOSSIER</span>
+          <span class="text-muted" id="modal-project-category">SYSTEM_DEEP_DIVE</span>
+        </div>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Specification">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modal-body-content">
+        <!-- Rendered dynamically by script.js -->
       </div>
     </div>
   </div>
-</section>
 
-<section class="section" id="skills">
-  <div class="section-heading reveal">
-    <span class="section-number">03</span>
-    <h2>Skills</h2>
+  <!-- Toast Notification HUD -->
+  <div class="cyber-toast" id="cyber-toast" aria-hidden="true">
+    <span class="toast-dot"></span>
+    <span class="toast-text font-mono" id="toast-text">TRANSMISSION PROTOCOL COPIED</span>
   </div>
-  <div class="skills-grid reveal">
-    <div class="skill-pill">Python</div>
-    <div class="skill-pill">HTML</div>
-    <div class="skill-pill">CSS</div>
-    <div class="skill-pill">JavaScript</div>
-    <div class="skill-pill">SQLite</div>
-    <div class="skill-pill">Git &amp; GitHub</div>
-    <div class="skill-pill">PySide6</div>
-    <div class="skill-pill">Application Security</div>
-    <div class="skill-pill">Problem Solving</div>
-  </div>
-</section>
 
-<section class="section" id="contact">
-  <div class="section-heading reveal">
-    <span class="section-number">04</span>
-    <h2>Get In Touch</h2>
-  </div>
-  <div class="contact-box reveal">
-    <h3>Let's build something together.</h3>
-    <p>I'm open to opportunities, collaborations, and just talking about software. Feel free to reach out.</p>
-    <a href="mailto:wasifali19477@gmail.com" class="btn btn-primary">wasifali19477@gmail.com</a>
-    <div class="contact-socials">
-      <a href="https://github.com/WasifAli-IT" target="_blank">GitHub →</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>Designed &amp; built by Wasif Ali · <span id="year"></span></p>
-</footer>
-
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&#10094;</button>
-  <img src="" alt="Expanded screenshot" id="lightboxImg" />
-  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&#10095;</button>
-</div>
-
-<script src="script.js"></script>
+  <!-- Script Module -->
+  <script src="script.js"></script>
 </body>
 </html>
